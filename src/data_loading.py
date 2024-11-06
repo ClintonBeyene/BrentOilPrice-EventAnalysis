@@ -5,7 +5,7 @@ import os
 import sys
 from dotenv import load_dotenv
 import warnings
-import logging 
+import logging
 
 # Add the parent directory to the system path
 sys.path.append(os.path.join(os.path.abspath('../')))
@@ -34,30 +34,54 @@ DATABASE_URI = os.getenv('DATABASE_URI')
 # Create the engine
 engine = create_engine(DATABASE_URI)
 
-# Load the CSV file
-csv_file_path = '../data/Copy of BrentOilPrices.csv'
-df = pd.read_csv(csv_file_path)
+class DataLoader:
+    def __init__(self, csv_file_path):
+        """
+        Initialize the DataLoader with the path to the CSV file.
+        
+        :param csv_file_path: Path to the CSV file containing the data.
+        """
+        self.csv_file_path = csv_file_path
+        self.df = None
 
-def data_loading(df):
-    try:
-        logging.info('Loading the data into database')
-        # Load the data into the database
-        table_name = 'BrentOilPrices'
-        df.to_sql(table_name, con=engine, if_exists='replace', index=False)
-        logging.info('Data loaded into database')
-        print(f"Data successfully loaded into table: {table_name}")
-    except Exception as e:
-        logging.error(f"Error loading data into the database: {e}")
+    def load_data(self):
+        """
+        Load the data from the CSV file into a DataFrame.
+        """
+        try:
+            logging.info('Loading data from CSV file')
+            self.df = pd.read_csv(self.csv_file_path)
+            logging.info('Data loaded from CSV file')
+            print("Data successfully loaded from CSV file")
+        except Exception as e:
+            logging.error(f"Error loading data from CSV file: {e}")
 
-def query_data():
-    try:
-        logging.info('Loading the data from database')
-        table_name = 'BrentOilPrices'
-        query = f'SELECT * FROM {table_name}'
+    def load_data_to_database(self):
+        """
+        Load the DataFrame into the database.
+        """
+        try:
+            logging.info('Loading the data into the database')
+            table_name = 'BrentOilPrices'
+            self.df.to_sql(table_name, con=engine, if_exists='replace', index=False)
+            logging.info('Data loaded into database')
+            print(f"Data successfully loaded into table: {table_name}")
+        except Exception as e:
+            logging.error(f"Error loading data into the database: {e}")
 
-        # Read the data into a DataFrame
-        df = pd.read_sql(query, con=engine)
-        return df
-    except Exception as e:
-        logging.error(f"Error querying data from the database: {e}")
-        return None
+    def query_data_from_database(self):
+        """
+        Query the data from the database and return it as a DataFrame.
+        
+        :return: DataFrame containing the data from the database.
+        """
+        try:
+            logging.info('Loading the data from the database')
+            table_name = 'BrentOilPrices'
+            query = f'SELECT * FROM public."{table_name}"'
+            df = pd.read_sql(query, con=engine)
+            logging.info('Data loaded from database')
+            return df
+        except Exception as e:
+            logging.error(f"Error querying data from the database: {e}")
+            return None
