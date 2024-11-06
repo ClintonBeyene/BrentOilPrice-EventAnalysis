@@ -1,3 +1,10 @@
 week10
 .env
 data
+new_env
+dashboard
+notebooks/arima_model.pkl
+notebooks/lstm_model.h5
+2.25.1
+5
+src/__pycache__/
