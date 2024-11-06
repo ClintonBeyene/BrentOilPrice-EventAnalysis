@@ -6,3 +6,13 @@ psyopg2
 matplotlib
 seaborn
 scipy
+tensorflow
+requests
+wbdata
+joblib
+pymc
+arviz
+scipy
+scikit-learn
+statsmodels
+pmdarima
