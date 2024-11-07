@@ -1,0 +1,32 @@
+/* src/components/About.css */
+.about {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact {
+    display: flex; /* Use flexbox for horizontal layout */
+    align-items: center; /* Center items vertically */
+}
+
+.contact-item {
+    margin-right: 10px; /* Space between "Contact Me" and links */
+    font-weight: bold; /* Make "Contact Me" bold */
+}
+
+.links {
+    display: flex; /* Use flexbox for links */
+}
+
+.link {
+    margin-right: 15px; /* Space between links */
+    text-decoration: none; /* Remove underline */
+    color: #007bff; /* Link color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.link:hover {
+    color: #0056b3; /* Change color on hover */
+}
