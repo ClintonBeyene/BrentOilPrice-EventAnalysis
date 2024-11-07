@@ -1,4 +1,4 @@
-# Oil Price Statistical Modeling
+# Brent Oil Price EventAnalysis
 
 A comprehensive project analyzing the impact of significant political and economic events on Brent oil prices. This repository includes data preprocessing scripts, statistical modeling using ARIMA and LSTM, exploratory data analysis (EDA) visualizations, and an interactive dashboard built with Flask and React. The goal is to provide actionable insights for investors, policymakers, and energy companies navigating the complexities of the oil market.
 
@@ -11,7 +11,7 @@ A comprehensive project analyzing the impact of significant political and econom
 - **Economic Indicator Analysis on Oil Price**
 - **Machine Learning Modeling (LSTM)**
 - **Dashboard Design (Flask and React)**
-- **Insight Interpretation (Check the Document Report)**
+
 
 ## Project Structure
 ```
@@ -50,14 +50,3 @@ python -m venv .venv
 ```bash
 pip install -r requirements.txt
 ```
-
-
-## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-
-## Contact
-For questions or feedback, please open an issue or contact the maintainers.
-```
-
-
