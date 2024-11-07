@@ -100,8 +100,7 @@ class OilPriceAnalyzer:
 
     def bayesian_change_point(self):
         data = self.df['Price'].values
-        prior_mu1 = np.mean(data)
-        prior_mu2 = np.mean(data)
+        prior_mu = np.mean(data)
 
         # Define the Bayesian model
         with pm.Model() as model:
@@ -109,19 +108,14 @@ class OilPriceAnalyzer:
             change_point = pm.DiscreteUniform('change_point', lower=0, upper=len(data) - 1)
 
             # Segment-specific means and standard deviations
-            mu1 = pm.Normal('mean_prior1', mu=prior_mu1, sigma=5)  # Mean for segment 1
-            mu2 = pm.Normal('mean_prior2', mu=prior_mu2, sigma=5)  # Mean for segment 2
-            sigma1 = pm.HalfNormal('sigma1', sigma=5)  # Std deviation for segment 1
-            sigma2 = pm.HalfNormal('sigma2', sigma=5)  # Std deviation for segment 2
+            mu = pm.Normal('mean', mu=prior_mu, sigma=5)  # Mean for both segments
+            sigma = pm.HalfNormal('sigma', sigma=5)  # Std deviation for both segments
 
             # Likelihood with switching behavior at change point
-            mu = pm.math.switch(change_point >= np.arange(len(data)), mu1, mu2)
-            sigma = pm.math.switch(change_point >= np.arange(len(data)), sigma1, sigma2)
             likelihood = pm.Normal('likelihood', mu=mu, sigma=sigma, observed=data)
 
             # Sample from the posterior
-            trace = pm.sample(4000, tune=2000, chains=4, random_seed=42)
-
+            trace = pm.sample(1000, tune=500, chains=2, random_seed=42)  # Reduced samples and chains
 
         # Plot convergence diagnostics
         az.plot_trace(trace)
@@ -136,7 +130,7 @@ class OilPriceAnalyzer:
         estimated_change_point = int(np.median(s_posterior))
 
         # Map change point index back to date
-        change_point_date =self.df.index[estimated_change_point]
+        change_point_date = self.df.index[estimated_change_point]
         print(f"Estimated Change Point Date: {change_point_date}")
 
         # Calculate 95% HDI for the change point
