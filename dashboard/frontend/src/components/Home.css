@@ -1,0 +1,26 @@
+/* frontend/src/components/Home.css */
+
+.home {
+    padding: 20px;
+    background-color: #f0f0f0; /* Light background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home h1 {
+    color: #4a4e69; /* Darker text for the main heading */
+}
+
+.home h2 {
+    color: #333; /* Darker text for subheadings */
+    margin-top: 20px;
+}
+
+.home p {
+    color: #555; /* Slightly lighter text for paragraphs */
+}
+
+.home ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
