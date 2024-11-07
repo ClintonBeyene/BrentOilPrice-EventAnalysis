@@ -1,0 +1,18 @@
+/* frontend/src/components/Statistics.css */
+
+.statistics {
+    background: #ffffff; /* White background */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.statistics h3 {
+    margin-bottom: 15px;
+    color: #4a4e69; /* Darker text */
+}
+
+.statistics ul {
+    list-style-type: none;
+    padding: 0;
+}
