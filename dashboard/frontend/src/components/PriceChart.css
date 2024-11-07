@@ -1,0 +1,13 @@
+/* frontend/src/components/PriceChart.css */
+
+.price-chart {
+    background: #ffffff; /* White background */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.price-chart h3 {
+    margin-bottom: 15px;
+    color: #4a4e69; /* Darker text */
+}
