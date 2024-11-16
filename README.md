@@ -1,5 +1,5 @@
-# Oil Price EventAnalysis
-![Oil Price Event Impact Modeling](dashboard/Profileimage.jpg)
+# Oil Price Event Impact Modeling
+<img src="relative/dashboard/Profileimage.jpg" alt="Oil Price Event Impact Modeling" width="800"/> 
 A comprehensive project analyzing the impact of significant political and economic events on Brent oil prices. This repository includes data preprocessing scripts, statistical modeling using ARIMA and LSTM, exploratory data analysis (EDA) visualizations, and an interactive dashboard built with Flask and React. The goal is to provide actionable insights for investors, policymakers, and energy companies navigating the complexities of the oil market.
 
 ## Project Banner
